@@ -1,0 +1,185 @@
+/* Estilos generales */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Barra de navegación */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 0.5rem 3rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s ease;
+    
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #0078d4;
+}
+
+/* Estilos del botón del menú móvil */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 0.3rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Menú móvil */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes buttonHover {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+.hero-content {
+    animation: fadeIn 1s ease-out;
+}
+
+.service-card {
+    animation: fadeIn 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
+
+.testimonial-card {
+    animation: fadeIn 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+.testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+.testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+
+.nav-links.active {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Animación de desvanecimiento de elementos */
+.animate-in {
+    animation: fadeIn 1s ease-out;
+}
+
+/* Animación de entrada para botones */
+button, .btn, .nav-links a {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+button:hover, .btn:hover, .nav-links a:hover {
+    animation: buttonHover 0.3s ease-in-out;
+    color: #fff;
+    background-color: #0078d4;
+}
+
+/* Efecto de sombra en botones */
+button:focus, .btn:focus, .nav-links a:focus {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+/* Animación de entrada para secciones */
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}

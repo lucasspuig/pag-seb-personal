@@ -1,0 +1,117 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenuBtn?.addEventListener('click', () => {
+        const isOpen = navLinks?.classList.toggle('active');
+        mobileMenuBtn.querySelectorAll('span').forEach(span => span.classList.toggle('active'));
+        mobileMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-container')) {
+            navLinks?.classList.remove('active');
+        }
+    });
+
+    // Smooth scrolling with offset for fixed navbar
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            const offset = -100; // Ajuste para que no quede justo en el borde superior
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset + offset;
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            navLinks?.classList.remove('active');
+        });
+    });
+
+    // Form handling
+    const contactForm = document.getElementById('contact-form');
+    contactForm?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(contactForm);
+        
+        // Simple client-side validation
+        const name = formData.get('name');
+        const email = formData.get('email');
+        if (!name || !email) {
+            alert('Por favor, completa todos los campos.');
+            return;
+        }
+        
+        try {
+            console.log('Form submitted:', Object.fromEntries(formData.entries()));
+            alert('Mensaje enviado correctamente. Me pondré en contacto contigo pronto.');
+            contactForm.reset();
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.');
+        }
+    });
+
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    // Observamos las secciones para animar cuando entren en vista
+    document.querySelectorAll('.service-card, .testimonial-card, .about-content, section').forEach(el => observer.observe(el));
+
+    // Header scroll behavior
+    let lastScroll = 0;
+    const header = document.querySelector('.header');
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll <= 0) {
+            header?.classList.remove('scroll-up');
+            return;
+        }
+        if (currentScroll > lastScroll && !header?.classList.contains('scroll-down')) {
+            header?.classList.remove('scroll-up');
+            header?.classList.add('scroll-down');
+        } else if (currentScroll < lastScroll && header?.classList.contains('scroll-down')) {
+            header?.classList.remove('scroll-down');
+            header?.classList.add('scroll-up');
+        }
+        lastScroll = currentScroll;
+
+        // Close mobile menu on scroll
+        navLinks?.classList.remove('active');
+    });
+
+    // Hover animation for buttons
+    const buttons = document.querySelectorAll('.primary-button, .secondary-button, .submit-button');
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', () => {
+            button.classList.add('hover');
+        });
+        button.addEventListener('mouseleave', () => {
+            button.classList.remove('hover');
+        });
+    });
+
+    // Load more functionality for services/testimonials (example)
+    const loadMoreBtn = document.querySelector('#load-more-btn');
+    loadMoreBtn?.addEventListener('click', () => {
+        // You can implement dynamic loading of more content here
+        console.log('Cargar más contenido...');
+        loadMoreBtn.style.display = 'none'; // Hide the load more button after click
+    });
+
+    // Parallax effect for background images (optional)
+    const parallaxElements = document.querySelectorAll('.parallax');
+    window.addEventListener('scroll', () => {
+        parallaxElements.forEach(el => {
+            const offset = window.pageYOffset;
+            el.style.backgroundPosition = `center ${offset * 0.5}px`;
+        });
+    });
+});
