@@ -115,3 +115,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+// Detectar cuando los elementos entran en vista
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+// Observar los elementos que deben animarse
+const animatedElements = document.querySelectorAll('.fade-in, .fade-in-delay, .fade-in-delay-2');
+animatedElements.forEach(el => observer.observe(el));
