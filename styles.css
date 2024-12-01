@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #009e9c;
-    --primary-dark: #017f7d;
+    --primary-color: #e67220f9;
+    --primary-dark: #cd6d14;
     --secondary-color: #F3F4F6;
     --text-primary: #1F2937;
     --text-secondary: #4B5563;
@@ -347,8 +347,10 @@ transform: scale(1.05);
 /* Servicios */
 .services {
     padding: 6rem 1rem;
-    max-width: 1200px;
+    max-width: 1900px;
     margin: 0 auto;
+    background-color: #f5f5f5;
+    
 }
 
 .services-grid {
@@ -356,15 +358,28 @@ transform: scale(1.05);
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
 }
+.service-card h3{
+    text-align: center;
+    font-family: 'Lora', serif;
+    font-size: 1.6rem;
 
+}
+
+.service-card p{
+    text-align: center;
+    line-height: 1;
+    margin-top: 3%;
+    font-size: 1.3;
+}
 .service-card {
     background: #fff;
-    padding: 2rem;
+    padding: 2.1rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     opacity: 0;
     transform: translateY(20px);
     animation: fadeIn 0.6s ease-out forwards;
+
 }
 
 .service-card:nth-child(1) { animation-delay: 0.1s; }
@@ -373,7 +388,7 @@ transform: scale(1.05);
 
 /* Proceso de Transformación */
 .process {
-    padding: 6rem 1rem;
+    padding: 7rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -381,17 +396,29 @@ transform: scale(1.05);
 .process-steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 5rem;
 }
 
 .process-step {
     background: #fff;
-    padding: 2rem;
+    padding: 3rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     opacity: 0;
     transform: translateY(20px);
     animation: fadeIn 0.6s ease-out forwards;
+    background-color: #f5f5f5;
+    
+}
+.process-step h3{
+    text-align: center;
+    font-family: 'Lora', serif;
+    font-size: 1.6rem;
+}
+.process-step p{
+    text-align: center;
+    line-height: 1.1;
+    margin-top: 3%;
 }
 
 .process-step:nth-child(1) { animation-delay: 0.1s; }
@@ -399,12 +426,18 @@ transform: scale(1.05);
 .process-step:nth-child(3) { animation-delay: 0.3s; }
 
 .process-step::before {
+    text-align: center;
     content: "1";
-    font-size: 2rem;
+    font-size: 1.3rem;
     font-weight: bold;
-    color: #00b8d4;
+    color: #ffffff;
     margin-bottom: 1rem;
     display: block;
+    background-color: var(--primary-color);
+    border-radius: 100%;
+    width: 13%;
+    margin-left: 43%;
+    
 }
 
 .process-step:nth-child(2)::before {
