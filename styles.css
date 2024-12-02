@@ -134,31 +134,37 @@ section {
     display: flex;
     gap: 2rem;
     list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition-smooth);
+    position: relative;
     
 }
 
-.nav-links  a {
-    text-decoration: none;
-    color: var(--text-primary);
-    font-weight: 500;
-    transition: color 0.3s ease;
-    color: #ffffff;
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease, left 0.3s ease;
 }
 
-.nav-links a:hover {
-    color: var(--primary-color);
-}
-
-.cta-button {
-    background-color: var(--primary-color);
-    color: var(--white) !important;
-    padding: 0.5rem 1.5rem;
-    border-radius: 25px;
-    transition: background-color 0.3s ease;
+.nav-links a:hover::after {
+    width: 100%;
+    left: 0;
 }
 
 .cta-button:hover {
-    background-color: var(--primary-dark);
+    background-color: black;
 }
 
 /* Hero Section */
@@ -167,14 +173,15 @@ section {
     padding: 4rem 1rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 6rem;
     max-width: 1200px;
-    margin: 80px auto 0;
+    margin: 81px 170px 0;
     align-items: center;
 }
 
 .hero-content {
     padding-right: 2rem;
+    
 }
 
 .hero h1 {
@@ -183,17 +190,21 @@ section {
     line-height: 1.2;
     margin-bottom: 1.5rem;
     color: var(--text-primary);
+    text-align: center;
 }
 
 .hero p {
     font-size: 1.25rem;
     color: var(--text-secondary);
     margin-bottom: 2rem;
+    text-align: center;
 }
 
 .hero-buttons {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
+    margin-left: 8%;
+    
 }
 
 .primary-button {
@@ -227,12 +238,56 @@ section {
 }
 
 .hero-image img {
-    width: 100%;
-    height: auto;
+    width: 140%;
+    height: 750px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-right: 5%;
+}
+/*frase*/
+
+/* Contenedor principal */
+.dynamic-quote-container {
+    width: 100%;
+    
+    padding: 1rem;
+    position: relative;
+    
+    border-radius: 4px;
+    text-align: center;
+    overflow: hidden;
 }
 
+/* Bordes decorativos */
+.border-decorative {
+    height: 2px;
+    width: 100%;
+    margin: 1rem auto;
+    background:  var(--primary-color);
+    
+    border-radius: 50px;
+}
+
+/* Estilo del texto dinámico */
+.dynamic-quote-container p {
+    font-size: 1.7rem;
+    line-height: 1.6;
+    font-family:var(--font-heading);
+    
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 /* About Section */
 .about {
 padding: 6rem 2rem;
@@ -391,6 +446,7 @@ transform: scale(1.05);
     padding: 7rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    margin-bottom:3%;
 }
 
 .process-steps {
@@ -408,7 +464,9 @@ transform: scale(1.05);
     transform: translateY(20px);
     animation: fadeIn 0.6s ease-out forwards;
     background-color: #f5f5f5;
-    
+    border-style: groove;
+    border-color: var(--primary-color);
+    border-width: 0.1px;
 }
 .process-step h3{
     text-align: center;
@@ -504,9 +562,32 @@ transform: scale(1.05);
     grid-template-columns: 1fr 2fr;
     gap: 4rem;
 }
+.contact-info{
+    margin-top: 5%;
+
+}
+.infoconta{
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1rem;
+    border: none;
+    border-radius: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-right: 10%;
+}
 
 .contact-info ul {
     list-style: none;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    margin-left: 10%;
+    margin-top: 10%;
+    font-size: 20px;
 }
 
 .contact-info li {
@@ -517,8 +598,8 @@ transform: scale(1.05);
 }
 
 .contact-info img {
-    width: 24px;
-    height: 24px;
+    width: 45px;
+    height: 45px;
 }
 
 .contact-form {
@@ -561,14 +642,14 @@ transform: scale(1.05);
 }
 
 .submit-button:hover {
-    background-color: var(--primary-dark);
+    background-color: var(--secondary-color);
 }
 
 /* Footer */
 .footer {
-    background-color: var(--text-primary);
-    color: var(--white);
-    padding: 4rem 1rem 2rem;
+    background-color: #000000f9;
+    color: white;
+    padding: 3rem 1rem 2rem;
 }
 
 .footer-content {

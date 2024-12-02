@@ -133,3 +133,33 @@ const observer = new IntersectionObserver((entries) => {
 // Observar los elementos que deben animarse
 const animatedElements = document.querySelectorAll('.fade-in, .fade-in-delay, .fade-in-delay-2');
 animatedElements.forEach(el => observer.observe(el));
+
+const quotes = [
+    '"El SÍNTOMA, es el camino de sanación a una vida plena"',
+    '"Tu síntoma es el maestro que te guía hacia tu verdadero ser"',
+    '"La sanación comienza cuando escuchas lo que tu síntoma quiere decirte"',
+    '"En cada síntoma hay un mensaje de transformación esperando ser descubierto"'
+];
+
+let currentQuoteIndex = 0;
+
+function changeQuote() {
+    const quoteElement = document.getElementById('quote');
+    
+    // Animación de desvanecimiento
+    quoteElement.style.opacity = 0; // Desaparece
+    setTimeout(() => {
+        currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length; // Ciclo de frases
+        quoteElement.textContent = quotes[currentQuoteIndex];
+        quoteElement.style.opacity = 1; // Reaparece
+    }, 500); // Sincronizado con la transición
+}
+
+// Cambiar frase cada 5 segundos
+setInterval(changeQuote, 7000);
+
+// Mostrar la primera frase inmediatamente
+document.addEventListener("DOMContentLoaded", () => {
+    const quoteElement = document.getElementById('quote');
+    quoteElement.style.opacity = 1;
+});
