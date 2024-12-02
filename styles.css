@@ -173,9 +173,9 @@ section {
     padding: 4rem 1rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6rem;
+    gap: 3rem;
     max-width: 1200px;
-    margin: 81px 170px 0;
+    margin: 81px 110px 0;
     align-items: center;
 }
 
@@ -238,8 +238,8 @@ section {
 }
 
 .hero-image img {
-    width: 140%;
-    height: 750px;
+    width: 160%;
+    height: 820px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     margin-right: 5%;
