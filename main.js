@@ -163,3 +163,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const quoteElement = document.getElementById('quote');
     quoteElement.style.opacity = 1;
 });
+function generateProfileImage() {
+    const profileImage = document.getElementById('profileImage');
+    const apiUrl = `https://api.multiavatar.com/${Math.random()}.svg`;
+    
+    fetch(apiUrl)
+        .then(response => response.text())
+        .then(svgData => {
+            profileImage.src = `data:image/svg+xml;base64,${btoa(svgData)}`;
+        })
+        .catch(error => {
+            console.error('Error generando imagen:', error);
+            profileImage.src = '/api/placeholder/150/150';
+        });
+}
+
+document.addEventListener('DOMContentLoaded', generateProfileImage);
