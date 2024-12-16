@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }, {
-        threshold: 0.5 // Activa cuando el 50% del elemento esté visible
+        threshold: 0.4 // Activa cuando el 50% del elemento esté visible
     });
 
     observer.observe(profileImage);
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }, {
-        threshold: 0.6 // Activa cuando el 50% del elemento esté visible
+        threshold: 0.3 // Activa cuando el 50% del elemento esté visible
     });
 
     observer.observe(footerLogo);
@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }, {
-        threshold: 0.9 // Activa cuando el 50% del elemento esté visible
+        threshold: 0.5 // Activa cuando el 50% del elemento esté visible
     });
 
     contactItems.forEach(item => observer.observe(item)); // Observa cada elemento de la lista
