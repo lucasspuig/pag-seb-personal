@@ -121,13 +121,24 @@ section {
     padding-bottom: 1rem;
     
 }
+/* Keyframe para la animación */
+@keyframes slideInToPosition {
+    from {
+        transform: translateX(100vw); /* Empieza fuera del lado izquierdo de la página */
+        opacity: 0; /* Comienza invisible */
+    }
+    to {
+        transform: translateX(0); /* Llega a su posición final */
+        opacity: 1; /* Se vuelve visible */
+    }
+}
 
+/* Estilos para el logo */
 .logo-img {
-    
     margin-top: 7%;
     width: 70%;
     height: 70%;
-    
+    animation: slideInToPosition 3.5s ease-in-out; /* Aplica la animación */
 }
 
 .nav-links {
@@ -311,6 +322,19 @@ section {
 
 }
 
+/* Keyframe para la animación desde arriba */
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-100px); /* Empieza más arriba de su posición final */
+        opacity: 0; /* Comienza invisible */
+    }
+    to {
+        transform: translateY(0); /* Llega a su posición final */
+        opacity: 1; /* Se vuelve visible */
+    }
+}
+
+/* Estilo inicial de la imagen */
 .profile-image {
     width: 280px;
     height: 380px;
@@ -318,7 +342,16 @@ section {
     object-fit: cover;
     box-shadow: 0 10px 10px rgb(202, 201, 201);
     margin-bottom: 20%;
+    opacity: 0; /* Oculta inicialmente */
+    transform: translateY(-100px); /* Posición inicial fuera del marco */
+    transition: opacity 0.7s ease, transform 0.8s ease; /* Transición suave */
 }
+
+/* Clase para activar la animación */
+.profile-image.animate {
+    animation: slideInFromTop 0.9s ease-out forwards; /* Aplica la animación */
+}
+
 .text-section {
     width: 75%;
     padding: 25px;
@@ -539,6 +572,34 @@ section {
     gap: 1rem;
     margin-bottom: 1.5rem;
 }
+/* Keyframe para la animación desde la derecha */
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100px); /* Comienza más a la derecha de su posición final */
+        opacity: 0; /* Comienza invisible */
+    }
+    to {
+        transform: translateX(0); /* Llega a su posición final */
+        opacity: 1; /* Se vuelve visible */
+    }
+}
+
+/* Estilo inicial de los elementos */
+.contact-info li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0; /* Oculto inicialmente */
+    transform: translateX(100px); /* Posición inicial desplazada hacia la derecha */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Transición suave */
+}
+
+/* Clase para activar la animación */
+.contact-info li.animate {
+    animation: slideInFromRight 1s ease-out forwards; /* Aplica la animación */
+}
+
 
 .contact-info img {
     width: 35px;
@@ -604,12 +665,34 @@ section {
     gap: 4rem;
 }
 
+/* Keyframe para la animación desde arriba */
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-100px); /* Comienza más arriba de su posición final */
+        opacity: 0; /* Comienza invisible */
+    }
+    to {
+        transform: translateY(0); /* Llega a su posición final */
+        opacity: 1; /* Se vuelve visible */
+    }
+}
+
+/* Estilo inicial del logo */
 .footer-logo {
     width: 35%;
     height: 48%;
     margin-bottom: 1rem;
     background-color: #fffffff5;
+    opacity: 0; /* Oculto inicialmente */
+    transform: translateY(-100px); /* Posición inicial desplazada hacia arriba */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Transición suave */
 }
+
+/* Clase para activar la animación */
+.footer-logo.animate {
+    animation: slideInFromTop 1s ease-out forwards; /* Aplica la animación */
+}
+
 
 .footer h4 {
     font-family: var(--font-heading);

@@ -163,3 +163,49 @@ document.addEventListener("DOMContentLoaded", () => {
     const quoteElement = document.getElementById('quote');
     quoteElement.style.opacity = 1;
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const profileImage = document.querySelector('.profile-image');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                profileImage.classList.add('animate'); // Agrega la clase para iniciar la animación
+            }
+        });
+    }, {
+        threshold: 0.5 // Activa cuando el 50% del elemento esté visible
+    });
+
+    observer.observe(profileImage);
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const footerLogo = document.querySelector('.footer-logo');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                footerLogo.classList.add('animate'); // Agrega la clase para iniciar la animación
+            }
+        });
+    }, {
+        threshold: 0.6 // Activa cuando el 50% del elemento esté visible
+    });
+
+    observer.observe(footerLogo);
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const contactItems = document.querySelectorAll('.contact-info li');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate'); // Agrega la clase para iniciar la animación
+            }
+        });
+    }, {
+        threshold: 0.9 // Activa cuando el 50% del elemento esté visible
+    });
+
+    contactItems.forEach(item => observer.observe(item)); // Observa cada elemento de la lista
+});
+
