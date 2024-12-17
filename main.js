@@ -163,6 +163,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const quoteElement = document.getElementById('quote');
     quoteElement.style.opacity = 1;
 });
+
+//imagen propia
 document.addEventListener("DOMContentLoaded", () => {
     const profileImage = document.querySelector('.profile-image');
 
@@ -178,6 +180,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     observer.observe(profileImage);
 });
+
+//fotter logo
 document.addEventListener("DOMContentLoaded", () => {
     const footerLogo = document.querySelector('.footer-logo');
 
@@ -193,6 +197,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     observer.observe(footerLogo);
 });
+
+/* contactos iconos */
 document.addEventListener("DOMContentLoaded", () => {
     const contactItems = document.querySelectorAll('.contact-info li');
 
@@ -209,3 +215,63 @@ document.addEventListener("DOMContentLoaded", () => {
     contactItems.forEach(item => observer.observe(item)); // Observa cada elemento de la lista
 });
 
+
+/* testimonios */
+document.addEventListener("DOMContentLoaded", () => {
+    const testimonialCards = document.querySelectorAll(".testimonial-card");
+
+    // Configuración del IntersectionObserver
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible"); // Añade la clase visible
+                }
+            });
+        },
+        {
+            threshold: 0.2, // El 20% del elemento debe estar visible
+        }
+    );
+
+    // Observar cada tarjeta de testimonio
+    testimonialCards.forEach((card) => observer.observe(card));
+});
+
+
+//formulario
+document.addEventListener("DOMContentLoaded", () => {
+    const contactForm = document.querySelector(".contact-form");
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    contactForm.classList.add("visible"); // Añade la clase visible al formulario
+                }
+            });
+        },
+        { threshold: 0.2 } // Detecta cuando el 20% del formulario es visible
+    );
+
+    observer.observe(contactForm);
+});
+
+
+//titulos del fotter
+document.addEventListener("DOMContentLoaded", () => {
+    const footerHeadings = document.querySelectorAll(".footer h4"); // Selecciona todos los h4 del footer
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("animate"); // Añade la clase animate
+                }
+            });
+        },
+        { threshold: 0.1 } // Detecta cuando el 10% del elemento es visible
+    );
+
+    footerHeadings.forEach((heading) => observer.observe(heading)); // Observa cada h4
+});

@@ -138,7 +138,7 @@ section {
     margin-top: 7%;
     width: 70%;
     height: 70%;
-    animation: slideInToPosition 3.5s ease-in-out; /* Aplica la animación */
+    animation: slideInToPosition 3s ease-in-out; /* Aplica la animación */
 }
 
 .nav-links {
@@ -155,8 +155,8 @@ section {
     border-radius: var(--border-radius);
     transition: var(--transition-smooth);
     position: relative;
-    
 }
+
 
 .nav-links a::after {
     content: '';
@@ -485,6 +485,8 @@ section {
 .testimonials {
     padding: 6rem 1rem;
     background-color: #f5f5f5;
+    position: relative;
+    overflow: hidden;
 }
 
 .testimonials-slider {
@@ -497,15 +499,23 @@ section {
     background: #fff;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 0.6s ease-out forwards;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Inicialmente invisible */
+    transform: translateY(20px); /* Posición inicial para la animación */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Transición suave */
 }
 
-.testimonial-card:nth-child(1) { animation-delay: 0.1s; }
-.testimonial-card:nth-child(2) { animation-delay: 0.2s; }
-.testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+/* Cuando el elemento es visible */
+.testimonial-card.visible {
+    opacity: 1;
+    transform: translateY(0); /* Vuelve a su posición original */
+}
+
+/* Retrasos específicos para cada tarjeta */
+.testimonial-card:nth-child(1) { transition-delay: 0.1s; }
+.testimonial-card:nth-child(2) { transition-delay: 0.2s; }
+.testimonial-card:nth-child(3) { transition-delay: 0.3s; }
+
 
 /* Animaciones */
 @keyframes fadeIn {
@@ -648,6 +658,37 @@ section {
 .submit-button:hover {
     background-color: var(--secondary-color);
 }
+/*animaciones formulario*/
+.contact-form {
+    opacity: 0; /* Comienza invisible */
+    transform: translateX(50px); /* Desplazado desde el lado derecho */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Transición general del formulario */
+}
+
+.contact-form.visible {
+    opacity: 1; /* Se hace visible */
+    transform: translateX(0); /* Vuelve a su posición original */
+}
+
+.form-group, .submit-button {
+    opacity: 0; /* Elementos individuales comienzan invisibles */
+    transform: translateX(30px); /* Desplazados ligeramente desde el lado derecho */
+    transition: opacity 2.6s ease, transform 2.6s ease; /* Transición individual */
+}
+
+/* Cascada de elementos con retrasos */
+.form-group:nth-child(1) { transition-delay: 0.2s; }
+.form-group:nth-child(2) { transition-delay: 0.4s; }
+.form-group:nth-child(3) { transition-delay: 0.6s; }
+.form-group:nth-child(4) { transition-delay: 0.8s; }
+.submit-button { transition-delay: 1s; }
+
+.contact-form.visible .form-group,
+.contact-form.visible .submit-button {
+    opacity: 1; /* Elementos se hacen visibles */
+    transform: translateX(0); /* Vuelven a su posición original */
+}
+
 
 /* Footer */
 .footer {
@@ -739,5 +780,19 @@ section {
     height: 2px;
     background-color: var(--text-primary);
     transition: all 0.3s ease;
+}
+
+/*animaciones para los titulos del fotter*/
+/* Footer */
+
+.footer h4 {
+    opacity: 0; /* Inicialmente invisible */
+    transform: translateY(-30px); /* Posición inicial desde arriba */
+    transition: opacity 1.2s ease, transform 1.2s ease; /* Transición lenta */
+}
+
+.footer h4.animate {
+    opacity: 1; /* Se hace visible */
+    transform: translateY(0); /* Vuelve a su posición original */
 }
 
